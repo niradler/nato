@@ -3,7 +3,7 @@ name: go-release
 on:
   push:
     branches:
-        - master  
+      - master
     tags:
       - "*"
 
@@ -30,3 +30,8 @@ jobs:
           args: release --rm-dist
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
+      - name: Upload assets
+        uses: actions/upload-artifact@v3
+        with:
+          name: nato
+          path: dist/*
